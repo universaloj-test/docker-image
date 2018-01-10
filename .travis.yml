@@ -1,0 +1,7 @@
+sudo: required
+services:
+  - docker
+script:
+  - docker build -t uoj-test
+  - docker run --name uoj -dit -p 80:80 -p 3690:3690 --cap-add SYS_PTRACE uoj-test
+  - docker logs uoj
